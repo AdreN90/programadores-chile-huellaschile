@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,7 +31,7 @@ public class VeterinaryController {
     @ApiResponses(value = {@ApiResponse(
             responseCode = "200",
             description = "Get veterinary by Professional License Number",
-            content = {@Content(mediaType = "application/json", schema = @Schema(implementation = VeterinaryDTO.class))})
+            content = {@Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = VeterinaryDTO.class))})
     })
     public ResponseEntity<VeterinaryDTO> getById(@PathVariable("id") String id) {
         final VeterinaryDTO veterinary = service.findByProfessionalLicenseNumber(id);
@@ -52,7 +53,7 @@ public class VeterinaryController {
     @ApiResponses(value = {@ApiResponse(
             responseCode = "201",
             description = "Save veterinary",
-            content = {@Content(mediaType = "application/json", schema = @Schema(implementation = VeterinaryDTO.class))})
+            content = {@Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = VeterinaryDTO.class))})
     })
     public ResponseEntity<VeterinaryDTO> save(@Valid @RequestBody VeterinaryDTO veterinary) {
         final VeterinaryDTO veterinaryCreated = service.createVeterinary(veterinary);

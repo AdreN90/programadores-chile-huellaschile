@@ -12,6 +12,9 @@ import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 
+import static cl.programadoreschile.adrian.veterinary.constants.MessageConstants.MESSAGE_VETERINARY_DUPLICATED;
+import static cl.programadoreschile.adrian.veterinary.constants.MessageConstants.MESSAGE_VETERINARY_NOT_EXIST;
+
 @Repository
 @RequiredArgsConstructor
 public class VeterinaryRepository implements VeterinaryGateway {
@@ -24,7 +27,7 @@ public class VeterinaryRepository implements VeterinaryGateway {
     public VeterinaryDTO createVeterinary(VeterinaryDTO newVeterinary) {
         VeterinaryDTO veterinary = findByProfessionalLicenseNumber(newVeterinary.getProfessionalLicenseNumber());
         if (veterinary != null) {
-            final String rspFormatMsg = messages.getMessage("veterinary.duplicated.message", null, LocaleContextHolder.getLocale());
+            final String rspFormatMsg = messages.getMessage(MESSAGE_VETERINARY_DUPLICATED, null, LocaleContextHolder.getLocale());
             final String responseMessage = String.format(rspFormatMsg, newVeterinary.getProfessionalLicenseNumber());
             throw new APIException(responseMessage, HttpStatus.CONFLICT);
         } else {
@@ -37,13 +40,12 @@ public class VeterinaryRepository implements VeterinaryGateway {
     public VeterinaryDTO findByProfessionalLicenseNumber(String professionalLicenseNumber) {
         final VeterinaryDAO veterinary = veterinaryMongoRepository.findByProfessionalLicenseNumberEqualsIgnoreCase(professionalLicenseNumber);
         if (veterinary == null) {
-            final String rspFormatMsg = messages.getMessage("veterinary.not.exist.message", null, LocaleContextHolder.getLocale());
+            final String rspFormatMsg = messages.getMessage(MESSAGE_VETERINARY_NOT_EXIST, null, LocaleContextHolder.getLocale());
             final String responseMessage = String.format(rspFormatMsg, professionalLicenseNumber);
             throw new APIException(responseMessage, HttpStatus.CONFLICT);
         } else {
             return veterinaryMapper.toVeterinaryDTO(veterinary);
         }
-
     }
 
     @Override
@@ -51,6 +53,5 @@ public class VeterinaryRepository implements VeterinaryGateway {
         findByProfessionalLicenseNumber(professionalLicenseNumber);
         return veterinaryMapper.toVeterinaryDTO(veterinaryMongoRepository
                 .deleteVeterinaryDAOByProfessionalLicenseNumberEqualsIgnoreCase(professionalLicenseNumber));
-
     }
 }

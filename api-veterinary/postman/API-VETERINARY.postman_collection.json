@@ -9,7 +9,7 @@
 			"name": "Veterinary",
 			"item": [
 				{
-					"name": "User - findByID",
+					"name": "Veterinary - findByID",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -82,6 +82,147 @@
 								"veterinary",
 								"delete",
 								"1111111"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Vet",
+			"item": [
+				{
+					"name": "Vet - findByID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8018/veterinary/api/v1/vet/0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8018",
+							"path": [
+								"veterinary",
+								"api",
+								"v1",
+								"vet",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Vet - findByNationalRegister",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8018/veterinary/api/v1/vet/nationalRegister/1234",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8018",
+							"path": [
+								"veterinary",
+								"api",
+								"v1",
+								"vet",
+								"nationalRegister",
+								"1234"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Vet - save",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idVet\": 0,\r\n    \"nationalRegister\": \"1234\",\r\n    \"name\": \"Veterinaria TOTORO\",\r\n    \"certified\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8018/veterinary/api/v1/vet/save",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8018",
+							"path": [
+								"veterinary",
+								"api",
+								"v1",
+								"vet",
+								"save"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Vet - addVeterinaryToVet",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8018/veterinary/api/v1/vet/addVeterinaryToVet/0/0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8018",
+							"path": [
+								"veterinary",
+								"api",
+								"v1",
+								"vet",
+								"addVeterinaryToVet",
+								"0",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Veterinary- deleteByID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8018/veterinary/api/v1/vet/0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8018",
+							"path": [
+								"veterinary",
+								"api",
+								"v1",
+								"vet",
+								"0"
 							]
 						}
 					},
