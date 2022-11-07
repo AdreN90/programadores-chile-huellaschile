@@ -1,0 +1,93 @@
+{
+	"info": {
+		"_postman_id": "f6e23cd3-a37f-457c-872f-77cd79453566",
+		"name": "API-VETERINARY",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Veterinary",
+			"item": [
+				{
+					"name": "User - findByID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8018/veterinary/api/v1/veterinary/1111111",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8018",
+							"path": [
+								"veterinary",
+								"api",
+								"v1",
+								"veterinary",
+								"1111111"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Veterinary - save",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idVeterinary\": 1,\r\n    \"professionalLicenseNumber\": \"1111111\",\r\n    \"name\": \"thierry henry\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8018/veterinary/api/v1/veterinary/save",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8018",
+							"path": [
+								"veterinary",
+								"api",
+								"v1",
+								"veterinary",
+								"save"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Veterinary- deleteByID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8018/veterinary/api/v1/veterinary/delete/1111111",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8018",
+							"path": [
+								"veterinary",
+								"api",
+								"v1",
+								"veterinary",
+								"delete",
+								"1111111"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

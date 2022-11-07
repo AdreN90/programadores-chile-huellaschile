@@ -1,6 +1,6 @@
 # programadores-chile
 
-# EJERCICIO PRÁCTICO 2 - CASO VETERINARIA HUELLAS CHILE
+# EJERCICIO PRÁCTICO 2 - CASO VETERINARIA
 
 
 	1)	api-user-pet Swagger:
