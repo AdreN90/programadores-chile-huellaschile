@@ -26,7 +26,6 @@ dependencies {
 	implementation 'org.springdoc:springdoc-openapi-ui:1.6.12'
 	implementation 'org.springdoc:springdoc-openapi-webflux-ui:1.6.12'
 	implementation 'org.mapstruct:mapstruct:1.5.3.Final'
-	implementation 'org.jooq:jool-java-8:0.9.14'
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'mysql:mysql-connector-java'
 	annotationProcessor 'org.projectlombok:lombok'
