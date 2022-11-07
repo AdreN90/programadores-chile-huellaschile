@@ -1,13 +1,13 @@
 package cl.programadoreschile.adrian.veterinary.domain.gateways;
 
-import cl.programadoreschile.adrian.veterinary.persistence.models.VeterinaryDAO;
+import cl.programadoreschile.adrian.veterinary.domain.entities.VeterinaryDTO;
 
 public interface VeterinaryGateway {
 
-    VeterinaryDAO createVeterinary(VeterinaryDAO veterinary);
+    VeterinaryDTO createVeterinary(VeterinaryDTO veterinary);
 
-    VeterinaryDAO findByProfessionalLicenseNumber(String professionalLicenseNumber);
+    VeterinaryDTO findByProfessionalLicenseNumber(String professionalLicenseNumber);
 
-    void delete(String professionalLicenseNumber);
+    VeterinaryDTO delete(String professionalLicenseNumber);
 
 }

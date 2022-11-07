@@ -1,7 +1,7 @@
 package cl.programadoreschile.adrian.veterinary.controller;
 
+import cl.programadoreschile.adrian.veterinary.domain.entities.VeterinaryDTO;
 import cl.programadoreschile.adrian.veterinary.domain.services.VeterinaryService;
-import cl.programadoreschile.adrian.veterinary.persistence.models.VeterinaryDAO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -13,6 +13,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
 @RequestMapping("/veterinary")
@@ -27,10 +30,20 @@ public class VeterinaryController {
     @ApiResponses(value = {@ApiResponse(
             responseCode = "200",
             description = "Get veterinary by Professional License Number",
-            content = {@Content(mediaType = "application/json", schema = @Schema(implementation = VeterinaryDAO.class))})
+            content = {@Content(mediaType = "application/json", schema = @Schema(implementation = VeterinaryDTO.class))})
     })
-    public ResponseEntity<VeterinaryDAO> getById(@PathVariable("id") String id) {
-        return new ResponseEntity<>(service.findByProfessionalLicenseNumber(id), HttpStatus.OK);
+    public ResponseEntity<VeterinaryDTO> getById(@PathVariable("id") String id) {
+        final VeterinaryDTO veterinary = service.findByProfessionalLicenseNumber(id);
+        veterinary.add(linkTo(methodOn(VeterinaryController.class)
+                        .getById(id))
+                        .withSelfRel(),
+                linkTo(methodOn(VeterinaryController.class)
+                        .save(veterinary))
+                        .withRel("save"),
+                linkTo(methodOn(VeterinaryController.class)
+                        .delete(id))
+                        .withRel("delete"));
+        return ResponseEntity.ok(veterinary);
     }
 
     @PostMapping("/save")
@@ -39,10 +52,14 @@ public class VeterinaryController {
     @ApiResponses(value = {@ApiResponse(
             responseCode = "201",
             description = "Save veterinary",
-            content = {@Content(mediaType = "application/json", schema = @Schema(implementation = VeterinaryDAO.class))})
+            content = {@Content(mediaType = "application/json", schema = @Schema(implementation = VeterinaryDTO.class))})
     })
-    public ResponseEntity<VeterinaryDAO> save(@Valid @RequestBody VeterinaryDAO veterinary) {
-        return new ResponseEntity<>(service.createVeterinary(veterinary), HttpStatus.CREATED);
+    public ResponseEntity<VeterinaryDTO> save(@Valid @RequestBody VeterinaryDTO veterinary) {
+        final VeterinaryDTO veterinaryCreated = service.createVeterinary(veterinary);
+        veterinary.add(linkTo(methodOn(VeterinaryController.class)
+                .getById(veterinaryCreated.getProfessionalLicenseNumber()))
+                .withSelfRel());
+        return new ResponseEntity<>(veterinaryCreated, HttpStatus.CREATED);
     }
 
     @DeleteMapping("/delete/{id}")
@@ -51,10 +68,19 @@ public class VeterinaryController {
     @ApiResponses(value = {@ApiResponse(
             responseCode = "200",
             description = "Veterinary deleted",
-            content = {@Content(mediaType = "String", schema = @Schema(implementation = Boolean.class))})
+            content = {@Content(mediaType = "String", schema = @Schema(implementation = VeterinaryDTO.class))})
     })
-    public ResponseEntity<Object> delete(@PathVariable("id") String id) {
-        service.delete(id);
-        return ResponseEntity.ok(true);
+    public ResponseEntity<VeterinaryDTO> delete(@PathVariable("id") String id) {
+        final VeterinaryDTO veterinaryDeleted = service.delete(id);
+        veterinaryDeleted.add(linkTo(methodOn(VeterinaryController.class)
+                        .getById(id))
+                        .withSelfRel(),
+                linkTo(methodOn(VeterinaryController.class)
+                        .save(veterinaryDeleted))
+                        .withRel("save"),
+                linkTo(methodOn(VeterinaryController.class)
+                        .delete(id))
+                        .withRel("delete"));
+        return ResponseEntity.ok(veterinaryDeleted);
     }
 }
