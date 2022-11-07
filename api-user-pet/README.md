@@ -8,5 +8,9 @@
     - databasedocs 
     - postman
 
+    BD: MysQL
+
+    Arquitectura: Hexagonal
+
     Swagger:
     http://localhost:8017/user-pet/api/v1/swagger-ui/index.html
