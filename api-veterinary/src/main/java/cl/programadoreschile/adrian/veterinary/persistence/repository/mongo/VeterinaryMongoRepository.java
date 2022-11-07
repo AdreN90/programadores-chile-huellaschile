@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface VeterinaryMongoRepository extends MongoRepository<VeterinaryDAO, String> {
+    VeterinaryDAO findByProfessionalLicenseNumberEqualsIgnoreCase(String professionalLicenseNumber);
+    VeterinaryDAO deleteVeterinaryDAOByProfessionalLicenseNumberEqualsIgnoreCase(String professionalLicenseNumber);
 }

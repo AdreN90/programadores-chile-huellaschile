@@ -15,4 +15,12 @@ public class VeterinaryService {
         return veterinaryGateway.createVeterinary(veterinary);
     }
 
+    public VeterinaryDAO findByProfessionalLicenseNumber(String professionalLicenseNumber) {
+        return veterinaryGateway.findByProfessionalLicenseNumber(professionalLicenseNumber);
+    }
+
+    public void delete(String professionalLicenseNumber) {
+        veterinaryGateway.delete(professionalLicenseNumber);
+    }
+
 }

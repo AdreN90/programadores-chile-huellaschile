@@ -2,9 +2,11 @@ package cl.programadoreschile.adrian.veterinary.controller;
 
 import cl.programadoreschile.adrian.veterinary.domain.services.VeterinaryService;
 import cl.programadoreschile.adrian.veterinary.persistence.models.VeterinaryDAO;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,15 +21,40 @@ public class VeterinaryController {
 
     private final VeterinaryService service;
 
+    @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(summary = "Get veterinary by Professional License Number")
+    @ApiResponses(value = {@ApiResponse(
+            responseCode = "200",
+            description = "Get veterinary by Professional License Number",
+            content = {@Content(mediaType = "application/json", schema = @Schema(implementation = VeterinaryDAO.class))})
+    })
+    public ResponseEntity<VeterinaryDAO> getById(@PathVariable("id") String id) {
+        return new ResponseEntity<>(service.findByProfessionalLicenseNumber(id), HttpStatus.OK);
+    }
 
     @PostMapping("/save")
-    @ApiOperation(value = "Create veterinary")
-    @ApiResponses(value = {
-            @ApiResponse(code = 201, message = "Successful"),
-            @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden", response = String.class),
-            @ApiResponse(code = 404, message = "Not Found", response = String.class),
-            @ApiResponse(code = 500, message = "Internal Server Error", response = String.class)})
+    @ResponseStatus(HttpStatus.CREATED)
+    @Operation(summary = "Save veterinary")
+    @ApiResponses(value = {@ApiResponse(
+            responseCode = "201",
+            description = "Save veterinary",
+            content = {@Content(mediaType = "application/json", schema = @Schema(implementation = VeterinaryDAO.class))})
+    })
     public ResponseEntity<VeterinaryDAO> save(@Valid @RequestBody VeterinaryDAO veterinary) {
         return new ResponseEntity<>(service.createVeterinary(veterinary), HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(summary = "Delete veterinary")
+    @ApiResponses(value = {@ApiResponse(
+            responseCode = "200",
+            description = "Veterinary deleted",
+            content = {@Content(mediaType = "String", schema = @Schema(implementation = Boolean.class))})
+    })
+    public ResponseEntity<Object> delete(@PathVariable("id") String id) {
+        service.delete(id);
+        return ResponseEntity.ok(true);
     }
 }
