@@ -20,11 +20,11 @@ public class VeterinaryService implements GetVeterinaryUseCase, CreateVeterinary
     private final MessageSource messages;
 
     public Veterinary getById(String id) {
+        final String rspFormatMsg = messages.getMessage("veterinary.not.exist.message", null, LocaleContextHolder.getLocale());
+        final String responseMessage = String.format(rspFormatMsg, id);
         return veterinaryOutputPort.
                 getById(id)
-                .orElseThrow(() -> new APIException(
-                        messages.getMessage("veterinary.not.exist.message", null, LocaleContextHolder.getLocale()),
-                        HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new APIException(responseMessage, HttpStatus.NOT_FOUND));
     }
 
     public Veterinary save(Veterinary veterinary) {
