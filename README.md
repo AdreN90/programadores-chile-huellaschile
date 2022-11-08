@@ -14,3 +14,9 @@
 		BD: MongoDB
 		Arquitectura: Orientada al dominio
 		Swagger: http://localhost:8018/veterinary/api/v1/swagger-ui/index.html
+		
+	3)	api-medical-consultation 
+	
+		BD: MysQL
+		Arquitectura: Hexagonal
+		Swagger: http://localhost:8019/consultation/api/v1/swagger-ui/index.html
