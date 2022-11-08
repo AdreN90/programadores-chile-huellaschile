@@ -17,15 +17,15 @@ import javax.validation.constraints.Size;
 public class Vet extends RepresentationModel<Vet> {
 
     @NotBlank
-    @Size(min = 1, max = 50, message = "nationalRegister size must be between {min} and {max}")
+    @Size(min = 1, max = 50)
     private String nationalRegister;
     @NotBlank
-    @Size(min = 1, max = 50, message = "name size must be between {min} and {max}")
+    @Size(min = 1, max = 50)
     private String name;
     @NotNull
     private Boolean certified;
     @NotBlank
-    @Size(min = 1, max = 50, message = "professionalLicenseNumber size must be between {min} and {max}")
+    @Size(min = 1, max = 50)
     private String professionalLicenseNumber;
 
 }
