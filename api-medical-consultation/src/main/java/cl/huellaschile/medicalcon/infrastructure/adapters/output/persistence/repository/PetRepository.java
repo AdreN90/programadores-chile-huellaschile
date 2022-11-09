@@ -13,8 +13,8 @@ public interface PetRepository extends CrudRepository<PetEntity, PetID> {
 
     Optional<List<PetEntity>> findByIdUserEqualsIgnoreCase(String idUser);
 
-    Optional<List<PetEntity>> findByRaceContainingIgnoreCase(String race);
+    Optional<List<PetEntity>> findByRaceEqualsIgnoreCase(String race);
 
-    Optional<List<PetEntity>> findByNamePetContainingIgnoreCase(String name);
+    Optional<List<PetEntity>> findByNamePetEqualsIgnoreCase(String name);
 
 }

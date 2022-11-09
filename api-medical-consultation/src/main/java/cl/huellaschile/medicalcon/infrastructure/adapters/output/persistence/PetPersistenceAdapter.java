@@ -43,13 +43,13 @@ public class PetPersistenceAdapter implements PetOutputPort {
 
     @Override
     public List<Pet> getByRace(String race) {
-        final Optional<List<PetEntity>> pets = petRepository.findByRaceContainingIgnoreCase(race);
+        final Optional<List<PetEntity>> pets = petRepository.findByRaceEqualsIgnoreCase(race);
         return pets.map(petPersistenceMapper::toPets).orElse(new ArrayList<>());
     }
 
     @Override
     public List<Pet> getByName(String name) {
-        final Optional<List<PetEntity>> pets = petRepository.findByNamePetContainingIgnoreCase(name);
+        final Optional<List<PetEntity>> pets = petRepository.findByNamePetEqualsIgnoreCase(name);
         return pets.map(petPersistenceMapper::toPets).orElse(new ArrayList<>());
     }
 

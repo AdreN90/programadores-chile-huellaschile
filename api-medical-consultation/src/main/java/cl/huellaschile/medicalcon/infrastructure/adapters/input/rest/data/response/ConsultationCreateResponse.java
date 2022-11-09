@@ -13,5 +13,6 @@ public class ConsultationCreateResponse {
     private String status;
     private Integer price;
     private String methodPayment;
+    private Boolean paidOut;
     private String process;
 }
