@@ -1,0 +1,583 @@
+{
+	"info": {
+		"_postman_id": "936bd49b-957f-449b-bdf7-dc87912ce07b",
+		"name": "API-MEDICAL-CONSULTATION",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "User - findByID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8019/consultation/api/v1/user/11719265-2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8019",
+							"path": [
+								"consultation",
+								"api",
+								"v1",
+								"user",
+								"11719265-2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User - save",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idUser\": \"16120532-k\",\r\n    \"name\": \"CRISTIANO\",\r\n    \"email\": \"cr7@gmail.com\",\r\n    \"address\": \"manchester 2000\",\r\n    \"city\": \"manchester\",\r\n    \"country\": \"England\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8019/consultation/api/v1/user/save",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8019",
+							"path": [
+								"consultation",
+								"api",
+								"v1",
+								"user",
+								"save"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User- deleteByID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8019/consultation/api/v1/user/delete/11719265-2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8019",
+							"path": [
+								"consultation",
+								"api",
+								"v1",
+								"user",
+								"delete",
+								"11719265-2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Vet",
+			"item": [
+				{
+					"name": "Vet- findByID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8019/consultation/api/v1/vet/12345",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8019",
+							"path": [
+								"consultation",
+								"api",
+								"v1",
+								"vet",
+								"12345"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Vet - save",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nationalRegister\": \"54321\",\r\n    \"name\": \"Veterinaria GMU\",\r\n    \"certified\": true,\r\n    \"professionalLicenseNumber\": \"54321\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8019/consultation/api/v1/vet/save",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8019",
+							"path": [
+								"consultation",
+								"api",
+								"v1",
+								"vet",
+								"save"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User- deleteByID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8019/consultation/api/v1/vet/delete/11719265-2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8019",
+							"path": [
+								"consultation",
+								"api",
+								"v1",
+								"vet",
+								"delete",
+								"11719265-2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Veterinary",
+			"item": [
+				{
+					"name": "Veterinary - findByID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8019/consultation/api/v1/veterinary/12345",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8019",
+							"path": [
+								"consultation",
+								"api",
+								"v1",
+								"veterinary",
+								"12345"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Veterinary - save",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"professionalLicenseNumber\": \"12345\",\r\n    \"name\": \"CRISTIANO\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8019/consultation/api/v1/veterinary/save",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8019",
+							"path": [
+								"consultation",
+								"api",
+								"v1",
+								"veterinary",
+								"save"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Veterinary - deleteByID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8019/consultation/api/v1/veterinary/delete/11719265-2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8019",
+							"path": [
+								"consultation",
+								"api",
+								"v1",
+								"veterinary",
+								"delete",
+								"11719265-2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pet",
+			"item": [
+				{
+					"name": "Pet - findByID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8019/consultation/api/v1/pet/16120532-k/ragnar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8019",
+							"path": [
+								"consultation",
+								"api",
+								"v1",
+								"pet",
+								"16120532-k",
+								"ragnar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pet - findByUserID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8017/user-pet/api/v1/pet/16120532-k",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8017",
+							"path": [
+								"user-pet",
+								"api",
+								"v1",
+								"pet",
+								"16120532-k"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pet - findByRace",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8019/consultation/api/v1/pet/race/gato",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8019",
+							"path": [
+								"consultation",
+								"api",
+								"v1",
+								"pet",
+								"race",
+								"gato"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pet - findByName",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8019/consultation/api/v1/pet/name/luffy",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8019",
+							"path": [
+								"consultation",
+								"api",
+								"v1",
+								"pet",
+								"name",
+								"luffy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pet - save",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idUser\": \"11719265-2\",\r\n    \"namePet\": \"luffy\",\r\n    \"race\": \"gato\",\r\n    \"treatmentName\": \"operación\",\r\n    \"treatmentActive\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8019/consultation/api/v1/pet/save",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8019",
+							"path": [
+								"consultation",
+								"api",
+								"v1",
+								"pet",
+								"save"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pet- deleteByID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8019/consultation/api/v1/pet/delete/16882644-3/ragnar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8019",
+							"path": [
+								"consultation",
+								"api",
+								"v1",
+								"pet",
+								"delete",
+								"16882644-3",
+								"ragnar"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Consultation",
+			"item": [
+				{
+					"name": "Consultation - findByID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8019/consultation/api/v1/consultation/123",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8019",
+							"path": [
+								"consultation",
+								"api",
+								"v1",
+								"consultation",
+								"123"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consultation - save",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"consultationId\": \"123\",\r\n    \"idUser\": \"11719265-2\",\r\n    \"namePet\": \"luffy\",\r\n    \"nationalRegister\": \"12345\",\r\n    \"status\": \"open\",\r\n    \"price\": \"100000\",\r\n    \"methodPayment\": \"webpay\",\r\n    \"paidOut\": false,\r\n    \"process\": \"vacunas\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8019/consultation/api/v1/consultation/save",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8019",
+							"path": [
+								"consultation",
+								"api",
+								"v1",
+								"consultation",
+								"save"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consultation - setStatusTreatment",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8019/consultation/api/v1/consultation/setStatusTreatment/123",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8019",
+							"path": [
+								"consultation",
+								"api",
+								"v1",
+								"consultation",
+								"setStatusTreatment",
+								"123"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consultation - payment",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"price\": 200000,\r\n    \"methodPayment\": \"servipag\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8019/consultation/api/v1/consultation/payment/123",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8019",
+							"path": [
+								"consultation",
+								"api",
+								"v1",
+								"consultation",
+								"payment",
+								"123"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consultation - setStatusClose",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8019/consultation/api/v1/consultation/setStatusClose/123",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8019",
+							"path": [
+								"consultation",
+								"api",
+								"v1",
+								"consultation",
+								"setStatusClose",
+								"123"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consultation - deleteByID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8019/consultation/api/v1/consultation/delete/123",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8019",
+							"path": [
+								"consultation",
+								"api",
+								"v1",
+								"consultation",
+								"delete",
+								"123"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

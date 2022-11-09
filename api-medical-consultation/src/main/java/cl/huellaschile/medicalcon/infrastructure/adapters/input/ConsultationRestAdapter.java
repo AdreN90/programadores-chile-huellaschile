@@ -49,10 +49,10 @@ public class ConsultationRestAdapter {
                         .withSelfRel(),
                 linkTo(methodOn(ConsultationRestAdapter.class)
                         .setStatusClose(id))
-                        .withSelfRel(),
+                        .withRel("setStatusClose"),
                 linkTo(methodOn(ConsultationRestAdapter.class)
                         .setStatusTreatment(id))
-                        .withSelfRel(),
+                        .withRel("setStatusTreatment"),
                 linkTo(methodOn(ConsultationRestAdapter.class)
                         .delete(id))
                         .withRel("delete"));
@@ -72,7 +72,7 @@ public class ConsultationRestAdapter {
         return new ResponseEntity<>(consultationCreated, HttpStatus.CREATED);
     }
 
-    @PutMapping("/setStatusClose{id}")
+    @PutMapping("/setStatusClose/{id}")
     @ResponseStatus(HttpStatus.OK)
     @Operation(summary = "Set status close to consultation")
     @ApiResponses(value = {@ApiResponse(
@@ -85,7 +85,7 @@ public class ConsultationRestAdapter {
         return new ResponseEntity<>(consultation, HttpStatus.OK);
     }
 
-    @PutMapping("/setStatusTreatment{id}")
+    @PutMapping("/setStatusTreatment/{id}")
     @ResponseStatus(HttpStatus.OK)
     @Operation(summary = "Set status treatment to consultation")
     @ApiResponses(value = {@ApiResponse(
@@ -98,7 +98,7 @@ public class ConsultationRestAdapter {
         return new ResponseEntity<>(consultation, HttpStatus.OK);
     }
 
-    @PutMapping("/payment{id}")
+    @PutMapping("/payment/{id}")
     @ResponseStatus(HttpStatus.OK)
     @Operation(summary = "Payment consultation")
     @ApiResponses(value = {@ApiResponse(
