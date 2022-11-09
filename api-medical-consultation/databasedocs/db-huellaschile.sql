@@ -11,53 +11,69 @@ drop table if exists VET;
 drop table if exists VETERINARY;
 
 /*==============================================================*/
-CREATE TABLE CONSULTATION (
-    ID_CONSULTATION VARCHAR(50) NOT NULL,
-    ID_USER VARCHAR(11) NOT NULL,
-    NAME_PET VARCHAR(50) NOT NULL,
-    NATIONAL_REGISTER VARCHAR(50) NOT NULL,
-    STATUS VARCHAR(11) NOT NULL,
-    PRICE INT NOT NULL,
-    METHOD_PAYMENT VARCHAR(50) NOT NULL,
-    PROCESS VARCHAR(50) NOT NULL,
-    PRIMARY KEY (ID_CONSULTATION)
+/* Table: CONSULTATION                                          */
+/*==============================================================*/
+create table CONSULTATION
+(
+   ID_CONSULTATION      varchar(50) not null,
+   ID_USER              varchar(11) not null,
+   NAME_PET             varchar(50) not null,
+   NATIONAL_REGISTER    varchar(50) not null,
+   STATUS               varchar(11) not null,
+   PRICE                int not null,
+   METHOD_PAYMENT       varchar(50) not null,
+   PAID_OUT             boolean not null,
+   PROCESS              varchar(50) not null,
+   primary key (ID_CONSULTATION)
 );
 
 /*==============================================================*/
-CREATE TABLE PET (
-    ID_USER VARCHAR(11) NOT NULL,
-    NAME_PET VARCHAR(50) NOT NULL,
-    RACE VARCHAR(50) NOT NULL,
-    TREATMENT_NAME VARCHAR(50) NOT NULL,
-    TREATMENT_ACTIVE BOOLEAN NOT NULL,
-    PRIMARY KEY (ID_USER , NAME_PET)
+/* Table: PET                                                   */
+/*==============================================================*/
+create table PET
+(
+   ID_USER              varchar(11) not null,
+   NAME_PET             varchar(50) not null,
+   RACE                 varchar(50) not null,
+   TREATMENT_NAME       varchar(50) not null,
+   TREATMENT_ACTIVE     boolean not null,
+   primary key (ID_USER, NAME_PET)
 );
 
 /*==============================================================*/
-CREATE TABLE USER (
-    ID_USER VARCHAR(11) NOT NULL,
-    NAME VARCHAR(50) NOT NULL,
-    EMAIL VARCHAR(100) NOT NULL,
-    ADDRESS VARCHAR(150) NOT NULL,
-    CITY VARCHAR(50) NOT NULL,
-    COUNTRY VARCHAR(50) NOT NULL,
-    PRIMARY KEY (ID_USER)
+/* Table: USER                                                  */
+/*==============================================================*/
+create table USER
+(
+   ID_USER              varchar(11) not null,
+   NAME                 varchar(50) not null,
+   EMAIL                varchar(100) not null,
+   ADDRESS              varchar(150) not null,
+   CITY                 varchar(50) not null,
+   COUNTRY              varchar(50) not null,
+   primary key (ID_USER)
 );
 
 /*==============================================================*/
-CREATE TABLE VET (
-    NATIONAL_REGISTER VARCHAR(50) NOT NULL,
-    NAME VARCHAR(50) NOT NULL,
-    CERTIFIED BOOLEAN NOT NULL,
-    PROFESSIONAL_LICENSE_NUMBER VARCHAR(50) NOT NULL,
-    PRIMARY KEY (NATIONAL_REGISTER)
+/* Table: VET                                                   */
+/*==============================================================*/
+create table VET
+(
+   NATIONAL_REGISTER    varchar(50) not null,
+   NAME                 varchar(50) not null,
+   CERTIFIED            boolean not null,
+   PROFESSIONAL_LICENSE_NUMBER varchar(50) not null,
+   primary key (NATIONAL_REGISTER)
 );
 
 /*==============================================================*/
-CREATE TABLE VETERINARY (
-    PROFESSIONAL_LICENSE_NUMBER VARCHAR(50) NOT NULL,
-    NAME VARCHAR(50) NOT NULL,
-    PRIMARY KEY (PROFESSIONAL_LICENSE_NUMBER)
+/* Table: VETERINARY                                            */
+/*==============================================================*/
+create table VETERINARY
+(
+   PROFESSIONAL_LICENSE_NUMBER varchar(50) not null,
+   NAME                 varchar(50) not null,
+   primary key (PROFESSIONAL_LICENSE_NUMBER)
 );
 
 alter table CONSULTATION add constraint FK_REFERENCE_4 foreign key (ID_USER, NAME_PET)

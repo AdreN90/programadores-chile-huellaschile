@@ -36,6 +36,9 @@ public class ConsultationEntity {
     @Column(name = "method_payment")
     @NonNull
     private String methodPayment;
+    @Column(name = "paid_out")
+    @NonNull
+    private Boolean paidOut;
     @Column(name = "process")
     @NonNull
     private String process;

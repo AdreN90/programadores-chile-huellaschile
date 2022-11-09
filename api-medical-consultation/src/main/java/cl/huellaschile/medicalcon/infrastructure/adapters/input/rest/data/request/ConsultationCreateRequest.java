@@ -35,6 +35,8 @@ public class ConsultationCreateRequest {
     @NotBlank
     @Size(min = 1, max = 50)
     private String methodPayment;
+    @NotNull
+    private Boolean paidOut;
     @NotBlank
     @Size(min = 1, max = 50)
     private String process;
