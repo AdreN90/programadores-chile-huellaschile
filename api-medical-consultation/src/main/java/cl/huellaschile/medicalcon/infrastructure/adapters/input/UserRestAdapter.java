@@ -11,6 +11,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,7 +35,7 @@ public class UserRestAdapter {
     @ApiResponses(value = {@ApiResponse(
             responseCode = "200",
             description = "Get user by id",
-            content = {@Content(mediaType = "application/json", schema = @Schema(implementation = User.class))})
+            content = {@Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = User.class))})
     })
     public ResponseEntity<User> getById(@PathVariable("id") String id) {
         final User user = getUserUseCase.getById(id);
@@ -56,7 +57,7 @@ public class UserRestAdapter {
     @ApiResponses(value = {@ApiResponse(
             responseCode = "201",
             description = "User created",
-            content = {@Content(mediaType = "application/json", schema = @Schema(implementation = User.class))})
+            content = {@Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = User.class))})
     })
     public ResponseEntity<User> create(@Valid @RequestBody User user) {
         final User userCreated = createUserUseCase.save(user);
